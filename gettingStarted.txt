@@ -1,0 +1,57 @@
+Environment Setup
+-Java JDK (latest LTS)
+-Eclipse IDE for Java Developers
+
+*If you are getting a java version error, follow this tutorial: https://www.youtube.com/watch?v=CgwpdheXvls&ab_channel=Reewen
+
+Setup Eclipse IDE Environment
+*From Eclipse Marketplace (Help > Eclipse Marketplace)
+-Cucumber Eclipse Plugin (Install All)
+-TestNG for Eclipse (Install All)
+
+
+!!Ignore below if using the automation-boilerplate!!
+
+Setup First Project
+1.) Create a Maven Project
+	a.)Artifact ID (Project Name)
+	b.)Group ID (Package Name)
+2.) Edit pom.xml
+	a.)Go to mvnrepository.com
+	b.)Open Cucumber JVM: Java (latest version)
+	c.)Copy the code under Maven Tab
+	d.)Add to pom.xml (before </project>:
+		<dependencies>
+			##Paste code copied from Cucumber JVM: Java here
+		</dependencies>
+	e.) After saving pom.xml, a 'Maven Dependencies' folder should have been added with necessary jar files in it
+	
+	f.)Also in mvnrepository.com, open Cucumber JVM: TestNG (latest version)
+	g.)Copy the code under Maven Tab
+	h.)Add the copied code within <dependencies></dependencies>
+	i.)After saving pom.xml, the Maven Dependencies folder should have new jar files
+	j.) Additional dependencies when creating framework
+		i.) 	Selenium Java: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+		ii.) 	Cucumber Picocontainer: https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer
+		iii.) 	Commons IO: https://mvnrepository.com/artifact/commons-io/commons-io
+		iv.) 	ExtentReports Cucumber7 Adapter: https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter
+		v.) 	ExtentReports: https://mvnrepository.com/artifact/com.aventstack/extentreports
+3.) Within src/test/java
+	a.)Create a new package (features) for feature files. [New > Package]
+		i.)		Create your feature files (firstFeature.feature) here. [New > File]
+	b.) Create a package (testOptions) for your runner. Name it testOptions if you wish. [New > Package]
+		i.)		Create your test runner class (testNGrunner.java) here. [New > Class]
+	c.)Create a package (stepDefinitions) for your step definitions here. [New > Package]
+		i.)		Create your step definitions class (firstSteps.java) here. [New > Class]
+	d.)When creating a framework, also add
+		i.) 	TestContext class (share info between classes)
+		ii.) 	TestSetup class (handles parameters)
+		iii.) 	BaseUtils Class (web driver initiator, other utils)
+		iv.) 	global.properties text file (define browser, url, useful parameters, etc.)
+		v.) 	extent.properties text file (extent reports)
+		vi.) 	Hooks class (recurring steps)
+		viii.) 	Failed Scenarios Test runner java
+*4.) To get started with your step definitions, an optional way is to create your scenarios (within feature file) and steps then run the runner without writing the step definitions.
+	Within the error outputs, a skeleton of step definitions for all steps will be generated. You may copy them into your steps definition file.
+	
+		
