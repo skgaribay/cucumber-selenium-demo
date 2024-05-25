@@ -3,6 +3,8 @@ package utils;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -18,7 +20,7 @@ public class TestSetup {
 	
 	public TestSetup() throws FileNotFoundException, IOException
 	{
-		this.prop.load(new FileInputStream(System.getProperty("user.dir")+"//src//test//resources//global.properties"));
+		this.prop.load(Files.newInputStream(Paths.get(System.getProperty("user.dir") + "//src//test//resources//global.properties")));
 	}
 
 	public WebDriver WebDriverManager()
@@ -32,12 +34,8 @@ public class TestSetup {
 		{
 			switch(browser.toLowerCase()) 
 			{
-				case "chrome":
-					System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"//src//test//resources//drivers//chrome//chromedriver.exe");
-					driver = new ChromeDriver();
-					break;
-					
-				case "firefox":
+
+                case "firefox":
 					System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"//src//test//resources//drivers//firefox//geckodriver.exe");
 					driver = new FirefoxDriver();
 					break;
@@ -51,17 +49,16 @@ public class TestSetup {
 					driver = new ChromeDriver();
 					break;
 			}
-			
+
+			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			
 			//Get URL based on set environment in properties
 			switch(env.toLowerCase())
 			{
-				case "dev":
-					this.url = prop.getProperty("devURL");
-					driver.get(this.url);
+				case "test":
 					break;
-				case "stage":
+                case "stage":
 					this.url = prop.getProperty("stgURL");
 					driver.get(this.url);
 					break;
@@ -99,4 +96,6 @@ public class TestSetup {
 	{
 		return prop.getProperty("password");
 	}
+
+	public int getTestSpeed() {return Integer.parseInt(prop.getProperty("testSpeed"));}
 }

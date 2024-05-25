@@ -42,7 +42,7 @@
       #| name1 |     5 | success |
       #| name2 |     7 | Fail    |
 #--------------------------------------------------------
-
+@tutorial
 Feature: Test feature 
 
 	Scenario: User is able to log in via email

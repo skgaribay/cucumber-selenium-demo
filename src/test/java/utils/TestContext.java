@@ -16,6 +16,7 @@ public class TestContext {
 	public String baseURL;
 	public String baseUser;
 	public String basePassword;
+	public int testSpeed;
 	
 	public TestContext() throws IOException
 	{
@@ -27,5 +28,6 @@ public class TestContext {
 		this.baseURL = testSetup.getBaseURL();
 		this.baseUser = testSetup.getBaseUser();
 		this.basePassword = testSetup.getBasePassword();
+		this.testSpeed = testSetup.getTestSpeed();
 	}
 }

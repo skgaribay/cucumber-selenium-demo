@@ -6,16 +6,16 @@ import utils.TestContext;
 
 public class PageObjectManager {
 	public WebDriver driver;
-	public FirstPage firstPage;
+	public LoginPage loginPage;
 	
 	public PageObjectManager(WebDriver driver)
 	{
 		this.driver = driver;
 	}
 	
-	public FirstPage getFirstPage()
+	public LoginPage getLoginPage()
 	{
-		firstPage = new FirstPage(driver);
-		return firstPage;
+		loginPage = new LoginPage(driver);
+		return loginPage;
 	}
 }
