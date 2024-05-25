@@ -13,22 +13,29 @@ public class LoginSteps {
     TestContext testContext;
     LoginPage loginPage;
 
+    //constructor
     public LoginSteps(TestContext testContext){
         this.testContext = testContext;
         this.loginPage = testContext.pageObjectManager.getLoginPage();
     }
 
-    @Given("User is on the landing page")
-    public void user_is_on_the_landing_page() throws InterruptedException {
+    @Given("User is on the login page")
+    public void user_is_on_the_login_page() throws InterruptedException {
         loginPage.goToLanding();
+        Thread.sleep(testContext.testSpeed);
     }
 
     @When("User logs in with {string} and {string}")
     public void user_logs_in_with_and(String user, String pass) throws InterruptedException {
-        loginPage.enterUser(user);
-        Thread.sleep(testContext.testSpeed);
-        loginPage.enterPass(pass);
-        Thread.sleep(testContext.testSpeed);
+        if (!user.equals("blank")) {
+            loginPage.enterUser(user);
+            Thread.sleep(testContext.testSpeed);
+        }
+        if (!pass.equals("blank")) {
+            loginPage.enterPass(pass);
+            Thread.sleep(testContext.testSpeed);
+        }
+
         loginPage.submit();
         Thread.sleep(testContext.testSpeed);
     }
@@ -37,4 +44,10 @@ public class LoginSteps {
         Assert.assertEquals(loginPage.getTitle(), "Products");
         Thread.sleep(testContext.testSpeed);
     }
+
+    @Then("The validation message is {string}")
+    public void the_validation_message_is(String errMsg) {
+        Assert.assertEquals(loginPage.getErr(), errMsg);
+    }
+
 }

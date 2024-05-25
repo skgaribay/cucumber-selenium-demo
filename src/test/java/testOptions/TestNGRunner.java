@@ -4,7 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features="src/test/java/features", 
-glue="stepDefinitions", monochrome=true, tags="not @tutorial", plugin= {"pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "rerun:target/failed_scenarios.txt"}, dryRun=false)
+glue="stepDefinitions", monochrome=true, tags="@uut", plugin= {"pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "rerun:target/failed_scenarios.txt"})
 /*
  * features=src"path" | point to the feature files package path
  * glue="packageName | name the package containing your step definitions java files

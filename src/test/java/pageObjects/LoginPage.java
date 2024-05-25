@@ -30,6 +30,10 @@ public class LoginPage {
     @FindBy(how = How.CSS, using = ".title")
     private WebElement title;
 
+    @FindBy(how = How.CSS, using = "h3[data-test='error']")
+    private WebElement loginErr;
+
+    //constructor
     public LoginPage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -54,5 +58,9 @@ public class LoginPage {
 
     public String getTitle(){
         return title.getText();
+    }
+
+    public String getErr(){
+        return loginErr.getText();
     }
 }
