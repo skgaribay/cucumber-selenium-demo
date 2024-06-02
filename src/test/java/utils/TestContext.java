@@ -17,6 +17,7 @@ public class TestContext {
 	public String baseUser;
 	public String basePassword;
 	public int testSpeed;
+	public String mainTab;
 	
 	public TestContext() throws IOException
 	{
@@ -29,5 +30,15 @@ public class TestContext {
 		this.baseUser = testSetup.getBaseUser();
 		this.basePassword = testSetup.getBasePassword();
 		this.testSpeed = testSetup.getTestSpeed();
+	}
+
+	public void setMainTab(String mainTab)
+	{
+		this.mainTab = mainTab;
+	}
+
+	public String getMainTab()
+	{
+		return this.mainTab;
 	}
 }

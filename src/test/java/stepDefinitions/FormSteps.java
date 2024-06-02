@@ -5,8 +5,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.datatable.DataTable;
 import org.testng.Assert;
-import org.testng.Reporter;
-import pageObjects.LoginPage;
 import utils.TestContext;
 
 import pageObjects.FormPage;
@@ -28,8 +26,8 @@ public class FormSteps {
         Thread.sleep(testContext.testSpeed);
     }
 
-    @When("User fillse up the form")
-    public void user_fillse_up_the_form(DataTable dataTable) throws InterruptedException {
+    @When("User fills up the form")
+    public void user_fills_up_the_form(DataTable dataTable) throws InterruptedException {
         List<String> data = dataTable.asList();
         formPage.enterName(data.get(0));
         Thread.sleep(testContext.testSpeed);

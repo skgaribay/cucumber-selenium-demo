@@ -8,6 +8,7 @@ public class PageObjectManager {
 	public WebDriver driver;
 	public LoginPage loginPage;
 	public FormPage formPage;
+	public NewTabPage newTabPage;
 	
 	public PageObjectManager(WebDriver driver)
 	{
@@ -24,5 +25,11 @@ public class PageObjectManager {
 	{
 		formPage = new FormPage(driver);
 		return formPage;
+	}
+
+	public NewTabPage getNewTabPage()
+	{
+		newTabPage = new NewTabPage(driver);
+		return newTabPage;
 	}
 }
