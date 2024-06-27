@@ -27,6 +27,8 @@ public class TestSetup {
 	{
 		String browser_properties = prop.getProperty("browser");
 		String browser_maven=System.getProperty("browser"); //cmd arg
+		System.out.println(browser_maven);
+		System.out.println("lololabcd");
 		String browser = browser_maven!=null ? browser_maven : browser_properties; //ternary
 		String env = prop.getProperty("environment");
 		

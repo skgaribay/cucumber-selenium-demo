@@ -1,5 +1,6 @@
 Feature: Demo
 
+  @uut
   Scenario: User is able to log in via email
     Given User is on the login page
     When User logs in with "standard_user" and "secret_sauce"
@@ -33,7 +34,6 @@ Feature: Demo
     When User clicks on the Open New Tab button
     Then the user is in the new tab
 
-  @uut
   Scenario: User opens new tab then returns to main tab
     Given User is on the Test New Tab page
     When User clicks on the Open New Tab button
